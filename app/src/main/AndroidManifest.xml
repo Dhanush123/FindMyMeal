@@ -28,7 +28,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".IngredientsActivity" />
-        <activity android:name=".RecipesViewActivity"></activity>
+        <activity android:name=".RecipesViewActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".StartingActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="StartingActivity" />
+        </activity>
     </application>
 
 </manifest>

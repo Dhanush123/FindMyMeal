@@ -1,7 +1,9 @@
 package com.x10host.dhanushpatel.findmymeal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.webkit.WebChromeClient;
@@ -28,17 +30,56 @@ public class RecipesViewActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         ArrayList<String> ingredients = i.getStringArrayListExtra("ingredientsUse");
-        String url = "http://allrecipes.com/search/results/?ingIncl=";
-        for(int x = 0; x < ingredients.size(); x++){
-            if(x < ingredients.size()-1){
-                url = url + ingredients.get(x) + ",";
-            }
-            else{
-                //for very last parameter
-                url = url + ingredients.get(ingredients.size()-1);
-            }
+
+        final SharedPreferences mSharedPreference = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String recipesSource = (mSharedPreference.getString("recipesSource", "allrecipes"));
+        loadRightSite(recipesSource, ingredients);
+    }
+
+    private void loadRightSite(String recipesSource, ArrayList<String> ingredients) {
+        String url="";
+
+        switch(recipesSource){
+            case "allrecipes":
+                url = "http://allrecipes.com/search/results/?ingIncl=";
+                for(int x = 0; x < ingredients.size(); x++){
+                    if(x < ingredients.size()-1){
+                        url = url + ingredients.get(x) + ",";
+                    }
+                    else{
+                        //for very last parameter
+                        url = url + ingredients.get(ingredients.size()-1);
+                    }
+                }
+                url = url + "&sort=re";
+                break;
+            case "yummly":
+                url = "http://www.yummly.com/recipes?q=";
+                for(int x = 0; x < ingredients.size(); x++){
+                    if(x < ingredients.size()-1){
+                        url = url + ingredients.get(x) + "%2C+";
+                    }
+                    else{
+                        //for very last parameter
+                        url = url + ingredients.get(ingredients.size()-1);
+                    }
+                }
+                break;
+            case "nytcooking":
+                url = "http://cooking.nytimes.com/search?q=";
+                for(int x = 0; x < ingredients.size(); x++){
+                    if(x < ingredients.size()-1){
+                        url = url + ingredients.get(x) + "%20";
+                    }
+                    else{
+                        //for very last parameter
+                        url = url + ingredients.get(ingredients.size()-1);
+                    }
+                }
+                break;
+            default:
+                //shouldn't go here tho
         }
-        url = url + "&sort=re";
         Log.i("Loading this recipe url",url);
         webView.loadUrl(url);
     }

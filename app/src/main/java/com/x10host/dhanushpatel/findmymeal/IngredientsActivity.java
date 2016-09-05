@@ -189,31 +189,6 @@ public class IngredientsActivity extends AppCompatActivity {
                 }
             }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
         }
-
-//        else if (requestCode == TAKE_PICTURE && resultCode == RESULT_OK && intent != null) {
-//            Bitmap photo = (Bitmap) intent.getExtras().get("data");
-//            imageView.setImageBitmap(photo);
-//
-//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//            photo.compress(Bitmap.CompressFormat.PNG, 90, stream);
-//            photoBytes = stream.toByteArray();
-//
-//            new AsyncTask<Void, Void, Void>() {
-//                @Override
-//                protected Void doInBackground(final Void... params) {
-//                    // something you know that will take a few seconds
-//                    results = clarifai.recognize(new RecognitionRequest(photoBytes).setModel("food-items-v0.1"));
-//                    return null;
-//                }
-//
-//                @Override
-//                protected void onPostExecute(final Void result) {
-//                    // continue what you are doing...
-//                    clarifaiProcess();
-//                    Log.i("Clarifai","recognition done.");
-//                }
-//            }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null);
-//        }
     }
 
     private void checkPermissions() {

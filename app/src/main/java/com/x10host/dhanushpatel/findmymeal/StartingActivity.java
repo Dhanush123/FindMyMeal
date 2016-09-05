@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 public class StartingActivity extends AppCompatActivity {
 
-    ImageButton galleryButton, cameraButton;
+    ImageButton galleryButton, cameraButton, settingsButton;
     Intent i;
 
     @Override
@@ -25,17 +25,24 @@ public class StartingActivity extends AppCompatActivity {
         galleryButton.setImageResource(R.drawable.galleryimg);
         cameraButton = (ImageButton) findViewById(R.id.cameraButton);
         cameraButton.setImageResource(R.drawable.cameraimg);
-
-        i = new Intent(StartingActivity.this,IngredientsActivity.class);
+        settingsButton = (ImageButton) findViewById(R.id.settingsButton);
+        settingsButton.setImageResource(R.drawable.settingsicon);
     }
 
     public void photoTake (View v){
+        i = new Intent(StartingActivity.this,IngredientsActivity.class);
         i.putExtra("whichImageIntent","photoTake");
         startActivity(i);
     }
 
     public void photoChoose (View v){
+        i = new Intent(StartingActivity.this,IngredientsActivity.class);
         i.putExtra("whichImageIntent","photoChoose");
+        startActivity(i);
+    }
+
+    public void goToSettings (View v){
+        i = new Intent(StartingActivity.this,SettingsActivity.class);
         startActivity(i);
     }
 }

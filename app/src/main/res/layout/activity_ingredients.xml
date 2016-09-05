@@ -19,11 +19,20 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Recipes"
+        android:id="@+id/recipeFindButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="goToRecipeFinder"/>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ingredients_listView"
-        android:layout_below="@id/photoShow"
+        android:layout_above="@id/recipeFindButton"
         android:choiceMode="multipleChoice" />
 
 </RelativeLayout>

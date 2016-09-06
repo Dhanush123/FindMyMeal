@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Find My Meal</string>
-
-    <string name="title_activity_starting">StartingActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="appTitle">Find My Meal</string>
     <string name="title_activity_settings">Settings</string>
     <string name="feedbackButton">Give Feedback</string>

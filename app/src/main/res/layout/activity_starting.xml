@@ -8,6 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:id="@+id/startRelLay"
+    android:background="@drawable/cottoncandy"
     tools:context="com.x10host.dhanushpatel.findmymeal.StartingActivity">
 
     <TextView
